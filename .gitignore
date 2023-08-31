@@ -153,3 +153,5 @@ cython_debug/
 
 venv/
 weather.sh
+.idea/
+.DS_Store
