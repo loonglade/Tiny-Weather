@@ -1,2 +1,2 @@
-source /Users/wiggly/Documents/GitHub/Weather/venv/bin/activate
-python3 /Users/wiggly/Documents/GitHub/Weather/temp.py
+source venv/bin/activate
+python3 temp.py

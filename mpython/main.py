@@ -2,12 +2,12 @@ from machine import Pin, SoftI2C
 import network, time, socket
 from bme280 import BME280
 
-SSID = "WIFINAME" #change to your WiFi name
-PW = "PASSWORD" #change to your WiFi password
+SSID = "TELUS4051"
+PW = "2asfminxz3"
 
 # Initialize the BME280 sensor
 try:
-    i2c = SoftI2C(sda=Pin(14), scl=Pin(15)) # Change the PINs to reflect your board
+    i2c = SoftI2C(sda=Pin(14), scl=Pin(15))
     bme = BME280(i2c=i2c)
 except Exception as e:
     print("Error initializing BME280 sensor: ", e)
@@ -29,10 +29,10 @@ def handle_request(conn):
     try:
         request = conn.recv(1024)
         print('Content = %s' % str(request))
-        response = 'HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n'
+        response = 'HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n'
         response += '<html><body>'
         response += '<h1>BME280 Sensor Readings</h1>'
-        response += "<p>Temperature: {} °</p>".format(bme.temperature())
+        response += "<p>Temperature: {} °C</p>".format(bme.temperature())
         response += '<p>Pressure: {} hPa</p>'.format(bme.pressure())
         response += '<p>Humidity: {} %</p>'.format(bme.humidity())
         response += '</body></html>'
@@ -45,10 +45,10 @@ def handle_request(conn):
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    s.bind(('192.168.1.103', 8000)) # Change that to whatever IP:Port your board will be set to
+    s.bind(('192.168.1.103', 8000))
     s.listen(5)
 
-    print('Web server running on 192.168.1.103:8000') # Change that to whatever IP:Port your board will be set to
+    print('Web server running on 192.168.1.103:8000')
 
     # Listen for incoming client requests and handle them with the handle_request function
     while True:
