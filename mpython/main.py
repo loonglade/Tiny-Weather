@@ -2,12 +2,12 @@ from machine import Pin, SoftI2C
 import network, time, socket
 from bme280 import BME280
 
-SSID = "TELUS4051"
-PW = "2asfminxz3"
+SSID = "SSID" # change this to your WiFi's SSID
+PW = "PASSWORD" # change this to your WiFi's password
 
 # Initialize the BME280 sensor
 try:
-    i2c = SoftI2C(sda=Pin(14), scl=Pin(15))
+    i2c = SoftI2C(sda=Pin(14), scl=Pin(15)) # change this to reflect your setup
     bme = BME280(i2c=i2c)
 except Exception as e:
     print("Error initializing BME280 sensor: ", e)
@@ -45,7 +45,7 @@ def handle_request(conn):
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    s.bind(('192.168.1.103', 8000))
+    s.bind(('192.168.1.103', 8000)) # change this to reflect your microcontroller's IP/Port
     s.listen(5)
 
     print('Web server running on 192.168.1.103:8000')
