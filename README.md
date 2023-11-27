@@ -27,4 +27,5 @@ The micropython files found in the folder "<a href="https://github.com/loonglade
 
 #### <img src="https://www.file-extensions.org/imgs/app-icon/128/10409/bitcoin-core-icon.png" width="20" height="20"> Donations </img>
 If this project is useful, consider donating. Any amount helps.
+
 bitcoin:bc1q6nu6347k3n077sscjntk949namnulrrpshz4j4
