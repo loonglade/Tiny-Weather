@@ -45,7 +45,11 @@ cat << EOF > "$PLIST"
 </plist>
 EOF
 
-# Load the plist file
-launchctl load "$PLIST"
+# Update ownership and permissions of the plist file
+chown $(whoami) "$PLIST"
+chmod 644 "$PLIST"
+
+# Load the plist file with launchctl
+launchctl bootstrap gui/$(id -u) "$PLIST" || launchctl load -w "$PLIST"
 
 echo "Setup is complete."
