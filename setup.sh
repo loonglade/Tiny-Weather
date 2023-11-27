@@ -4,8 +4,6 @@
 command -v python3 >/dev/null 2>&1 || { echo >&2 "Python 3 is required but it's not installed. Aborting."; exit 1; }
 command -v git >/dev/null 2>&1 || { echo >&2 "Git is required but it's not installed. Aborting."; exit 1; }
 
-
-cd "/Users/$(whoami)/Applications"
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
