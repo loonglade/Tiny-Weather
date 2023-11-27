@@ -22,34 +22,13 @@ cd "$PROJECT_DIR"
 source venv/bin/activate
 
 # Run the main Python script (update this with the correct script name)
-python temp.py
+python3 temp.py
 EOF
 
 # Make run_project.sh executable
 chmod +x run_project.sh
 
-# Create the launchd plist file
-PLIST="$HOME/Library/LaunchAgents/com.user.tinyweather.plist"
-cat << EOF > "$PLIST"
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>com.user.tinyweather</string>
-    <key>Program</key>
-    <string>$PROJECT_DIR/run_project.sh</string>
-    <key>RunAtLoad</key>
-    <true/>
-</dict>
-</plist>
-EOF
-
-# Update ownership and permissions of the plist file
-chown $(whoami) "$PLIST"
-chmod 644 "$PLIST"
-
-# Load the plist file with launchctl
-launchctl bootstrap gui/$(id -u) "$PLIST" || launchctl load -w "$PLIST"
+# Add a cron job to run the script at boot
+(crontab -l 2>/dev/null; echo "@reboot $PROJECT_DIR/run_project.sh") | crontab -
 
 echo "Setup is complete."
