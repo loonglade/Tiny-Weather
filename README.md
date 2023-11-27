@@ -24,19 +24,11 @@ Open terminal > cd path/to/folder >
 
 	pip install -r requirements.txt
 
-### Script
-	
-#### 1. Create weather.sh
-	nano weather.sh
-#### 2. Paste these lines (edit the path to reflect yours), save and exit the file
-	#!/bin/bash
-	python3 /path/to/your/weather.py
-
-#### 3. Turn script into an executable
-	chmod +x weather.sh
-
-#### 4. Execute script
-	nohup ./weather.sh &
+### Installation
+	git clone https://github.com/loonglade/Tiny-Weather.git
+ 	cd Tiny-Weather
+  	./setup.sh
 
 #### <img src="https://www.file-extensions.org/imgs/app-icon/128/10409/bitcoin-core-icon.png" width="20" height="20"> Donations </img>
+If this project is useful, consider donating. Any amount helps.
 bitcoin:bc1q6nu6347k3n077sscjntk949namnulrrpshz4j4
