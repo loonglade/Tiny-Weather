@@ -45,6 +45,6 @@ chmod +x run_project.sh
 (crontab -l 2>/dev/null; echo "@reboot $PROJECT_DIR/run_project.sh") | crontab -
 
 echo "Running Tiny-Weather"
-./run_project.sh
+nohup ./run_project.sh &
 
 echo "Setup is complete."
