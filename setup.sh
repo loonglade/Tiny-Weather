@@ -44,4 +44,7 @@ chmod +x run_project.sh
 # Add a cron job to run the script at boot
 (crontab -l 2>/dev/null; echo "@reboot $PROJECT_DIR/run_project.sh") | crontab -
 
+echo "Running Tiny-Weather"
+./run_project.sh
+
 echo "Setup is complete."
